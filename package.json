@@ -1,0 +1,48 @@
+{
+  "name": "dsh-delete-chat",
+  "description": "Confirmed archived-chat deletion with local recovery backups for DeepSeek Harness",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "author": "Cristian Silva",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roock3r/dsh-delete-chat.git"
+  },
+  "type": "module",
+  "main": "index.mjs",
+  "exports": {
+    ".": "./index.mjs",
+    "./client": "./client.js",
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "scripts": {
+    "test": "node --test distribution.test.mjs test/*.test.mjs",
+    "setup": "bash Install.command --apply",
+    "setup:check": "bash Install.command --check"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-ui-workspace",
+        "@deepseek-ai/dsh-client-ui-primitives",
+        "@deepseek-ai/dsh-client-ui-session"
+      ],
+      "external": [
+        "react",
+        "@deepseek-ai/dsh-client-ui-primitives"
+      ]
+    }
+  },
+  "homepage": "https://github.com/roock3r/dsh-delete-chat#readme",
+  "bugs": {
+    "url": "https://github.com/roock3r/dsh-delete-chat/issues"
+  }
+}
